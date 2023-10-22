@@ -7,9 +7,11 @@ public class BolaController : MonoBehaviour
     [SerializeField]
     private float velocidade = 0.2f;
     [SerializeField]
+#pragma warning disable CS0108 // O membro oculta o membro herdado; nova palavra-chave ausente
     private Rigidbody rigidbody;
+#pragma warning restore CS0108 // O membro oculta o membro herdado; nova palavra-chave ausente
     [SerializeField]
-    private bool gameOver = false;
+    public static bool gameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +28,12 @@ public class BolaController : MonoBehaviour
             InverterMovimento();
 
         if(!Physics.Raycast(transform.position, Vector3.down, 1.0f))
+        {
             gameOver = true;
+            rigidbody.useGravity = true;
+        }
 
-        if(gameOver) 
+        if (gameOver) 
             print("Game Over");
 
         Debug.DrawRay(transform.position, Vector3.down, Color.red);

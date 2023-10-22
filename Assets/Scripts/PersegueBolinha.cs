@@ -29,13 +29,14 @@ public class PersegueBolinha : MonoBehaviour
 
     private void LateUpdate()
     {
-        Perseguir();
+        if(!BolaController.gameOver)
+            Perseguir();
     }
 
     private void Perseguir()
     {
         posicaoAlvo = bolinha.position;
-        posicaoCamera = Vector3.Lerp(posicaoCamera, posicaoAlvo - distancia, lerpValue * Time.deltaTime);
+        posicaoCamera = Vector3.Lerp(posicaoCamera, posicaoAlvo - distancia, lerpValue);
         transform.position = posicaoCamera;
     }
 }
