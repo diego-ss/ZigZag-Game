@@ -12,6 +12,8 @@ public class BolaController : MonoBehaviour
 #pragma warning restore CS0108 // O membro oculta o membro herdado; nova palavra-chave ausente
     [SerializeField]
     public static bool gameOver = false;
+    [SerializeField]
+    public static int moedas = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,8 @@ public class BolaController : MonoBehaviour
             print("Game Over");
 
         Debug.DrawRay(transform.position, Vector3.down, Color.red);
+
+        velocidade += 0.0001f;
     }
 
     void InverterMovimento()
@@ -47,5 +51,15 @@ public class BolaController : MonoBehaviour
         else if(rigidbody.velocity.z > 0)
             rigidbody.velocity = new Vector3(velocidade, 0, 0);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Moeda"))
+        {
+            moedas++;
+            Destroy(other.gameObject);
+            print(moedas);
+        }
     }
 }

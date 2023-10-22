@@ -9,6 +9,8 @@ public class CriaPlataforma : MonoBehaviour
     [SerializeField]
     private GameObject plataforma;
     [SerializeField]
+    private GameObject moedaPrefab;
+    [SerializeField]
     private Vector3 posicaoInicial;
 
 
@@ -51,6 +53,10 @@ public class CriaPlataforma : MonoBehaviour
         {
             CriaNoEixo("Z");
         }
+
+        int rand = Random.Range(0, 5);
+        if (rand <= 1)
+            Instantiate(moedaPrefab, new Vector3(posicaoInicial.x, posicaoInicial.y + 0.25f, posicaoInicial.z), moedaPrefab.transform.rotation);
     }
 
     IEnumerator CriaChaoInGame()
