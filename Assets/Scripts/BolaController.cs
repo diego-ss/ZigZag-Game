@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BolaController : MonoBehaviour
 {
     [SerializeField]
-    private float velocidade = 1.5f;
+    private float velocidade = 1.5f, limiteVelocidade = 2.7f;
     [SerializeField]
 #pragma warning disable CS0108 // O membro oculta o membro herdado; nova palavra-chave ausente
     private Rigidbody rigidbody;
@@ -15,12 +16,15 @@ public class BolaController : MonoBehaviour
     [SerializeField]
     public static int moedas = 0;
 
+    public Text velocidadeText;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
 
         rigidbody.velocity = new Vector3(velocidade, 0, 0);
+        StartCoroutine(AjustaVelocidade());
     }
 
     // Update is called once per frame
@@ -40,7 +44,7 @@ public class BolaController : MonoBehaviour
 
         Debug.DrawRay(transform.position, Vector3.down, Color.red);
 
-        velocidade += 0.0001f;
+        velocidadeText.text = velocidade.ToString("N2");
     }
 
     void InverterMovimento()
@@ -60,6 +64,17 @@ public class BolaController : MonoBehaviour
             moedas++;
             Destroy(other.gameObject);
             print(moedas);
+        }
+    }
+
+    IEnumerator AjustaVelocidade()
+    {
+        while(!gameOver)
+        {
+            yield return new WaitForSeconds(1.3f);
+
+            if(velocidade < limiteVelocidade)
+                velocidade += 0.1f;
         }
     }
 }

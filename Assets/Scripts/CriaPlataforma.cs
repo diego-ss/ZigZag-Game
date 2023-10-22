@@ -63,7 +63,7 @@ public class CriaPlataforma : MonoBehaviour
     {
         while(!BolaController.gameOver)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             CriaChaoXZ();
         }
     }
