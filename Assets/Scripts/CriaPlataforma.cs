@@ -18,15 +18,12 @@ public class CriaPlataforma : MonoBehaviour
         posicaoInicial = plataforma.transform.position;
         tamanhoPlataforma = plataforma.transform.localScale.x;
 
-        for(int i = 0; i < 10; i++)
-            CriaChaoXZ();
-        
+        StartCoroutine(CriaChaoInGame());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void CriaNoEixo(string eixo)
@@ -53,6 +50,15 @@ public class CriaPlataforma : MonoBehaviour
         else
         {
             CriaNoEixo("Z");
+        }
+    }
+
+    IEnumerator CriaChaoInGame()
+    {
+        while(!BolaController.gameOver)
+        {
+            yield return new WaitForSeconds(0.5f);
+            CriaChaoXZ();
         }
     }
 }

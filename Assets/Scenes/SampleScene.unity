@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 29344258}
   m_Layer: 0
   m_Name: Bolinha
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -586,6 +586,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 47993466, guid: b6a686f49c5918645a5922cd6a7270a8, type: 3}
+      propertyPath: m_Name
+      value: TriggerCair
+      objectReference: {fileID: 0}
     - target: {fileID: 783323204886029132, guid: b6a686f49c5918645a5922cd6a7270a8,
         type: 3}
       propertyPath: m_RootOrder

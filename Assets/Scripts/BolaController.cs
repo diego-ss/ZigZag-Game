@@ -5,7 +5,7 @@ using UnityEngine;
 public class BolaController : MonoBehaviour
 {
     [SerializeField]
-    private float velocidade = 0.2f;
+    private float velocidade = 1.5f;
     [SerializeField]
 #pragma warning disable CS0108 // O membro oculta o membro herdado; nova palavra-chave ausente
     private Rigidbody rigidbody;
