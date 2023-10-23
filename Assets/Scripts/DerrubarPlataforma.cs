@@ -11,6 +11,7 @@ public class DerrubarPlataforma : MonoBehaviour
         {
             GetComponent<Rigidbody>().useGravity = true;
             Destroy(gameObject, 0.3f);
+            CriaPlataforma.plataformasEmCena--;
         }
     }
 }

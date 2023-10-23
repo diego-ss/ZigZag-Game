@@ -13,6 +13,10 @@ public class CriaPlataforma : MonoBehaviour
     [SerializeField]
     private Vector3 posicaoInicial;
 
+    [SerializeField]
+    private int limitePlataforma;
+    public static int plataformasEmCena;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +49,9 @@ public class CriaPlataforma : MonoBehaviour
     {
         var temp = Random.Range(1, 10);
 
+        if (plataformasEmCena >= limitePlataforma)
+            return;
+
         if(temp <= 5)
         {
             CriaNoEixo("X");
@@ -53,6 +60,8 @@ public class CriaPlataforma : MonoBehaviour
         {
             CriaNoEixo("Z");
         }
+
+        plataformasEmCena++;
 
         int rand = Random.Range(0, 5);
         if (rand <= 1)

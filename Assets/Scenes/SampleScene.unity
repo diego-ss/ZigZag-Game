@@ -247,7 +247,7 @@ MonoBehaviour:
   velocidade: 1.5
   limiteVelocidade: 2.7
   rigidbody: {fileID: 0}
-  velocidadeText: {fileID: 0}
+  velocidadeText: {fileID: 1556456030}
 --- !u!1 &247826166
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +620,7 @@ MonoBehaviour:
   moedaPrefab: {fileID: 1933098707758228868, guid: 05e1ab70ba772674fa3f152e1a44b413,
     type: 3}
   posicaoInicial: {x: 0, y: 0, z: 0}
+  limitePlataforma: 20
 --- !u!4 &1646371845
 Transform:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class BolaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !gameOver)
             InverterMovimento();
 
         if(!Physics.Raycast(transform.position, Vector3.down, 1.0f))
@@ -44,7 +44,7 @@ public class BolaController : MonoBehaviour
 
         Debug.DrawRay(transform.position, Vector3.down, Color.red);
 
-        velocidadeText.text = velocidade.ToString("N2");
+        velocidadeText.text = velocidade.ToString();
     }
 
     void InverterMovimento()
