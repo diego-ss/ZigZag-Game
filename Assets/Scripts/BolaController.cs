@@ -15,13 +15,14 @@ public class BolaController : MonoBehaviour
     public static bool gameOver = false;
     [SerializeField]
     public static int moedas = 0;
-
-    public Text velocidadeText;
+    [SerializeField]
+    public Text txtMoedas;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        txtMoedas.text = moedas.ToString();
 
         rigidbody.velocity = new Vector3(velocidade, 0, 0);
         StartCoroutine(AjustaVelocidade());
@@ -62,8 +63,8 @@ public class BolaController : MonoBehaviour
         if(other.gameObject.CompareTag("Moeda"))
         {
             moedas++;
+            txtMoedas.text = moedas.ToString();
             Destroy(other.gameObject);
-            print(moedas);
         }
     }
 
