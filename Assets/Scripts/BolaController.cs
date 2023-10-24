@@ -44,7 +44,7 @@ public class BolaController : MonoBehaviour
 
         Debug.DrawRay(transform.position, Vector3.down, Color.red);
 
-        velocidadeText.text = velocidade.ToString();
+        //velocidadeText.text = velocidade.ToString();
     }
 
     void InverterMovimento()
