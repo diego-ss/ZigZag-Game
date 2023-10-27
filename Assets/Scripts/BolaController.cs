@@ -24,6 +24,7 @@ public class BolaController : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        moedas = PlayerPrefs.GetInt("NumeroMoedas");
         txtMoedas.text = moedas.ToString();
 
         rigidbody.velocity = new Vector3(velocidade, 0, 0);
@@ -42,8 +43,11 @@ public class BolaController : MonoBehaviour
             rigidbody.useGravity = true;
         }
 
-        if (gameOver) 
+        if (gameOver)
+        {
             print("Game Over");
+            PlayerPrefs.SetInt("NumeroMoedas", moedas);
+        }
 
         Debug.DrawRay(transform.position, Vector3.down, Color.red);
 
