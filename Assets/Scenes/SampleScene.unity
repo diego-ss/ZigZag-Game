@@ -248,6 +248,7 @@ MonoBehaviour:
   limiteVelocidade: 2.7
   rigidbody: {fileID: 0}
   txtMoedas: {fileID: 1048952791}
+  particulasMoedas: {fileID: 180128, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 3}
 --- !u!1 &219634792
 GameObject:
   m_ObjectHideFlags: 0

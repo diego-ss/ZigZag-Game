@@ -17,6 +17,8 @@ public class BolaController : MonoBehaviour
     public static int moedas = 0;
     [SerializeField]
     public Text txtMoedas;
+    [SerializeField]
+    private GameObject particulasMoedas;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +66,7 @@ public class BolaController : MonoBehaviour
         {
             moedas++;
             txtMoedas.text = moedas.ToString();
+            Instantiate(particulasMoedas, other.gameObject.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
         }
     }
