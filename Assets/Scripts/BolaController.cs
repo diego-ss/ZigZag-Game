@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System;
 
 public class BolaController : MonoBehaviour
 {
@@ -20,6 +22,24 @@ public class BolaController : MonoBehaviour
     [SerializeField]
     private GameObject particulasMoedas;
 
+    // Variáveis GameOver
+    [SerializeField]
+    private Text txtBtn, txtGo;
+    [SerializeField]
+    private Image imgBtn, imgFundo;
+    [SerializeField]
+    private bool showGameOver = false;
+
+    void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene cena, LoadSceneMode modo)
+    {
+        gameOver = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +49,12 @@ public class BolaController : MonoBehaviour
 
         rigidbody.velocity = new Vector3(velocidade, 0, 0);
         StartCoroutine(AjustaVelocidade());
+
+        showGameOver = true;
+        txtBtn.enabled = false;
+        txtGo.enabled = false;
+        imgBtn.enabled = false;
+        imgFundo.enabled = false;
     }
 
     // Update is called once per frame
@@ -43,10 +69,14 @@ public class BolaController : MonoBehaviour
             rigidbody.useGravity = true;
         }
 
-        if (gameOver)
+        if (gameOver && showGameOver)
         {
-            print("Game Over");
             PlayerPrefs.SetInt("NumeroMoedas", moedas);
+            txtBtn.enabled = true;
+            txtGo.enabled = true;
+            imgBtn.enabled = true;
+            imgFundo.enabled = true;
+            showGameOver = false;
         }
 
         Debug.DrawRay(transform.position, Vector3.down, Color.red);
@@ -84,5 +114,10 @@ public class BolaController : MonoBehaviour
             if(velocidade < limiteVelocidade)
                 velocidade += 0.1f;
         }
+    }
+
+    public void JogarNovamente()
+    {
+        SceneManager.LoadScene(0);
     }
 }
